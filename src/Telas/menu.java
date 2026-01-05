@@ -1,0 +1,1180 @@
+package telas;
+
+import Telas.Alterar;
+import Telas.CriarLoja;
+import Telas.Inicial;
+import Telas.Loja;
+import Telas.MinhaLoja;
+import Telas.MinhasCompras;
+import dados.AppDao;
+import dados.Usuario;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+/**
+ *
+ * @author bruno.hgsilva3
+ */
+public class Menu extends javax.swing.JFrame {
+
+    private int id;
+
+    /**
+     * Creates new form Menu
+     */
+    
+    public Menu() {
+        initComponents();
+        MostrarLojas();
+    }
+
+    public Menu(int id) {
+        initComponents();
+        this.id = id;
+        MostrarLojas();
+    }
+
+    public Menu(int id, String isVendedor) {
+        initComponents();
+        this.id = id;
+
+        if (isVendedor.equals("Sim")) {
+            jMMinhaLoja.setVisible(true);
+        } else {
+            jMCriarLoja.setVisible(true);
+        }
+
+        MostrarLojas();
+
+    }
+
+    public void MostrarLojas() {
+        try {
+            ResultSet lojas = new AppDao().buscarTodasLojas();
+            int qtdLojas = TotalLojas();
+
+            // Itera sobre as lojas no ResultSet
+            int i = 1; // Contador para o número de lojas
+            while (lojas.next() && i <= qtdLojas) {
+                if (i == 1) {
+                    nomeLoja1.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja1.setText(lojas.getString("miniDescricao"));
+                    loja1.setVisible(true);
+                } else if (i == 2) {
+                    nomeLoja2.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja2.setText(lojas.getString("miniDescricao"));
+                    loja2.setVisible(true);
+                } else if (i == 3) {
+                    nomeLoja3.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja3.setText(lojas.getString("miniDescricao"));
+                    loja3.setVisible(true);
+                } else if (i == 4) {
+                    nomeLoja4.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja4.setText(lojas.getString("miniDescricao"));
+                    loja4.setVisible(true);
+                } else if (i == 5) {
+                    nomeLoja5.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja5.setText(lojas.getString("miniDescricao"));
+                    loja5.setVisible(true);
+                } else if (i == 6) {
+                    nomeLoja6.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja6.setText(lojas.getString("miniDescricao"));
+                    loja6.setVisible(true);
+                } else if (i == 7) {
+                    nomeLoja7.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja7.setText(lojas.getString("miniDescricao"));
+                    loja7.setVisible(true);
+                } else if (i == 8) {
+                    nomeLoja8.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja8.setText(lojas.getString("miniDescricao"));
+                    loja8.setVisible(true);
+                } else if (i == 9) {
+                    nomeLoja9.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja9.setText(lojas.getString("miniDescricao"));
+                    loja9.setVisible(true);
+                } else if (i == 10) {
+                    nomeLoja10.setText(lojas.getString("nomeLoja"));
+                    miniDescricaoLoja10.setText(lojas.getString("miniDescricao"));
+                    loja10.setVisible(true);
+                }
+                i++;
+            }
+
+            // Se nenhuma loja foi encontrada
+            if (i == 1) {
+                JOptionPane.showMessageDialog(null, "Lojas não encontradas");
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro: " + ex.getMessage());
+        }
+    }
+
+    public int TotalLojas() {
+        int totalLojas = 0;
+        try {
+            ResultSet rs = new AppDao().qtdLojas();
+            if (rs.next()) {
+                totalLojas = rs.getInt("total_lojas"); // total_lojas é do tipo INT
+                System.out.println("Total de lojas: " + totalLojas);
+            } else {// se nao encontrou
+                JOptionPane.showMessageDialog(null, "Loja não encontrado");
+            }
+            return totalLojas;
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+        }
+
+        return totalLojas;
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelLojas = new javax.swing.JPanel();
+        loja1 = new javax.swing.JPanel();
+        logoLoja1 = new javax.swing.JLabel();
+        btnLoja1 = new javax.swing.JButton();
+        avaliacao = new javax.swing.JLabel();
+        nomeLoja1 = new javax.swing.JLabel();
+        miniDescricaoLoja1 = new javax.swing.JLabel();
+        loja2 = new javax.swing.JPanel();
+        jlbImagem2 = new javax.swing.JLabel();
+        btnLoja2 = new javax.swing.JButton();
+        avaliacao2 = new javax.swing.JLabel();
+        nomeLoja2 = new javax.swing.JLabel();
+        miniDescricaoLoja2 = new javax.swing.JLabel();
+        loja3 = new javax.swing.JPanel();
+        jlbImagem3 = new javax.swing.JLabel();
+        btnLoja3 = new javax.swing.JButton();
+        avaliacao3 = new javax.swing.JLabel();
+        nomeLoja3 = new javax.swing.JLabel();
+        miniDescricaoLoja3 = new javax.swing.JLabel();
+        loja4 = new javax.swing.JPanel();
+        jlbImagem4 = new javax.swing.JLabel();
+        btnLoja4 = new javax.swing.JButton();
+        avaliacao4 = new javax.swing.JLabel();
+        nomeLoja4 = new javax.swing.JLabel();
+        miniDescricaoLoja4 = new javax.swing.JLabel();
+        loja5 = new javax.swing.JPanel();
+        jlbImagem5 = new javax.swing.JLabel();
+        btnLoja5 = new javax.swing.JButton();
+        avaliacao5 = new javax.swing.JLabel();
+        nomeLoja5 = new javax.swing.JLabel();
+        miniDescricaoLoja5 = new javax.swing.JLabel();
+        loja6 = new javax.swing.JPanel();
+        btnLoja6 = new javax.swing.JButton();
+        avaliacao6 = new javax.swing.JLabel();
+        nomeLoja6 = new javax.swing.JLabel();
+        miniDescricaoLoja6 = new javax.swing.JLabel();
+        jlbImagem11 = new javax.swing.JLabel();
+        loja7 = new javax.swing.JPanel();
+        btnLoja7 = new javax.swing.JButton();
+        avaliacao7 = new javax.swing.JLabel();
+        nomeLoja7 = new javax.swing.JLabel();
+        miniDescricaoLoja7 = new javax.swing.JLabel();
+        jlbImagem12 = new javax.swing.JLabel();
+        loja8 = new javax.swing.JPanel();
+        jlbImagem8 = new javax.swing.JLabel();
+        btnLoja8 = new javax.swing.JButton();
+        avaliacao8 = new javax.swing.JLabel();
+        nomeLoja8 = new javax.swing.JLabel();
+        miniDescricaoLoja8 = new javax.swing.JLabel();
+        loja9 = new javax.swing.JPanel();
+        jlbImagem9 = new javax.swing.JLabel();
+        btnLoja9 = new javax.swing.JButton();
+        avaliacao9 = new javax.swing.JLabel();
+        nomeLoja9 = new javax.swing.JLabel();
+        miniDescricaoLoja9 = new javax.swing.JLabel();
+        loja10 = new javax.swing.JPanel();
+        jlbImagem10 = new javax.swing.JLabel();
+        btnLoja10 = new javax.swing.JButton();
+        avaliacao10 = new javax.swing.JLabel();
+        nomeLoja10 = new javax.swing.JLabel();
+        miniDescricaoLoja10 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        logo = new javax.swing.JMenu();
+        espaco = new javax.swing.JMenu();
+        perfil = new javax.swing.JMenu();
+        jmDadosPessoais = new javax.swing.JMenu();
+        jMAlterarDados = new javax.swing.JMenuItem();
+        jMexcluirConta = new javax.swing.JMenuItem();
+        jMMinhasCompras = new javax.swing.JMenuItem();
+        jMLoja = new javax.swing.JMenu();
+        jMCriarLoja = new javax.swing.JMenuItem();
+        jMMinhaLoja = new javax.swing.JMenuItem();
+        jMSair = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        panelLojas.setBackground(new java.awt.Color(255, 255, 255));
+
+        loja1.setBackground(new java.awt.Color(255, 255, 255));
+        loja1.setVisible(false);
+        loja1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+
+        logoLoja1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        logoLoja1.setForeground(new java.awt.Color(255, 153, 0));
+        logoLoja1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja1.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja1.setText("Entrar");
+        btnLoja1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja1ActionPerformed(evt);
+            }
+        });
+
+        avaliacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja1.setText("Nome da loja");
+
+        miniDescricaoLoja1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        miniDescricaoLoja1.setText("Descricao");
+
+        javax.swing.GroupLayout loja1Layout = new javax.swing.GroupLayout(loja1);
+        loja1.setLayout(loja1Layout);
+        loja1Layout.setHorizontalGroup(
+            loja1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(logoLoja1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nomeLoja1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addComponent(avaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(miniDescricaoLoja1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLoja1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja1Layout.setVerticalGroup(
+            loja1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(logoLoja1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(loja1Layout.createSequentialGroup()
+                        .addComponent(nomeLoja1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLoja1)))
+                .addContainerGap())
+        );
+
+        loja2.setBackground(new java.awt.Color(255, 255, 255));
+        loja2.setVisible(false);
+        loja2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+
+        jlbImagem2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jlbImagem2.setForeground(new java.awt.Color(255, 153, 0));
+        jlbImagem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja2.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja2.setText("Entrar");
+        btnLoja2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja2ActionPerformed(evt);
+            }
+        });
+
+        avaliacao2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja2.setText("Nome da loja");
+
+        miniDescricaoLoja2.setText("Descricao");
+
+        javax.swing.GroupLayout loja2Layout = new javax.swing.GroupLayout(loja2);
+        loja2.setLayout(loja2Layout);
+        loja2Layout.setHorizontalGroup(
+            loja2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jlbImagem2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(loja2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja2Layout.createSequentialGroup()
+                        .addComponent(avaliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140))
+                    .addComponent(nomeLoja2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoja2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(miniDescricaoLoja2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja2Layout.setVerticalGroup(
+            loja2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlbImagem2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(loja2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(nomeLoja2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btnLoja2)
+                        .addContainerGap())))
+        );
+
+        loja3.setBackground(new java.awt.Color(255, 255, 255));
+        loja3.setVisible(false);
+        loja3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+
+        jlbImagem3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jlbImagem3.setForeground(new java.awt.Color(255, 153, 0));
+        jlbImagem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja3.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja3.setText("Entrar");
+        btnLoja3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja3ActionPerformed(evt);
+            }
+        });
+
+        avaliacao3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja3.setText("Nome da loja");
+
+        miniDescricaoLoja3.setText("Descricao");
+
+        javax.swing.GroupLayout loja3Layout = new javax.swing.GroupLayout(loja3);
+        loja3.setLayout(loja3Layout);
+        loja3Layout.setHorizontalGroup(
+            loja3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jlbImagem3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomeLoja3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(avaliacao3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(miniDescricaoLoja3, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLoja3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja3Layout.setVerticalGroup(
+            loja3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jlbImagem3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(loja3Layout.createSequentialGroup()
+                        .addComponent(nomeLoja3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoja3)))
+                .addContainerGap())
+        );
+
+        loja4.setBackground(new java.awt.Color(255, 255, 255));
+        loja4.setVisible(false);
+        loja4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+
+        jlbImagem4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jlbImagem4.setForeground(new java.awt.Color(255, 153, 0));
+        jlbImagem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+        jlbImagem4.setText("\n");
+
+        btnLoja4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja4.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja4.setText("Entrar");
+        btnLoja4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja4ActionPerformed(evt);
+            }
+        });
+
+        avaliacao4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja4.setText("Nome da loja");
+
+        miniDescricaoLoja4.setText("Descricao");
+
+        javax.swing.GroupLayout loja4Layout = new javax.swing.GroupLayout(loja4);
+        loja4.setLayout(loja4Layout);
+        loja4Layout.setHorizontalGroup(
+            loja4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jlbImagem4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja4Layout.createSequentialGroup()
+                        .addComponent(miniDescricaoLoja4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja4Layout.createSequentialGroup()
+                        .addGroup(loja4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeLoja4, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(avaliacao4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja4Layout.createSequentialGroup()
+                        .addComponent(btnLoja4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        loja4Layout.setVerticalGroup(
+            loja4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(loja4Layout.createSequentialGroup()
+                        .addComponent(nomeLoja4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoja4))
+                    .addComponent(jlbImagem4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        loja5.setBackground(new java.awt.Color(255, 255, 255));
+        loja5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja5.setVisible(false);
+        loja5.setPreferredSize(new java.awt.Dimension(340, 118));
+
+        jlbImagem5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jlbImagem5.setForeground(new java.awt.Color(255, 153, 51));
+        jlbImagem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja5.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja5.setText("Entrar");
+        btnLoja5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja5ActionPerformed(evt);
+            }
+        });
+
+        avaliacao5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja5.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja5.setText("Nome da loja");
+
+        miniDescricaoLoja5.setText("Descricao");
+
+        javax.swing.GroupLayout loja5Layout = new javax.swing.GroupLayout(loja5);
+        loja5.setLayout(loja5Layout);
+        loja5Layout.setHorizontalGroup(
+            loja5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jlbImagem5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(miniDescricaoLoja5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nomeLoja5, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addComponent(avaliacao5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLoja5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja5Layout.setVerticalGroup(
+            loja5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(loja5Layout.createSequentialGroup()
+                        .addComponent(nomeLoja5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoja5))
+                    .addComponent(jlbImagem5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        loja6.setBackground(new java.awt.Color(255, 255, 255));
+        loja6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja6.setVisible(false);
+        loja6.setPreferredSize(new java.awt.Dimension(340, 118));
+
+        btnLoja6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja6.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja6.setText("Entrar");
+        btnLoja6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja6ActionPerformed(evt);
+            }
+        });
+
+        avaliacao6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja6.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja6.setText("Nome da loja");
+
+        miniDescricaoLoja6.setText("Descricao");
+
+        jlbImagem11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        javax.swing.GroupLayout loja6Layout = new javax.swing.GroupLayout(loja6);
+        loja6.setLayout(loja6Layout);
+        loja6Layout.setHorizontalGroup(
+            loja6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jlbImagem11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(miniDescricaoLoja6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nomeLoja6, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addComponent(avaliacao6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLoja6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja6Layout.setVerticalGroup(
+            loja6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja6Layout.createSequentialGroup()
+                        .addComponent(nomeLoja6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLoja6))
+                    .addComponent(jlbImagem11, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        loja7.setBackground(new java.awt.Color(255, 255, 255));
+        loja7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja7.setVisible(false);
+        loja7.setPreferredSize(new java.awt.Dimension(340, 118));
+
+        btnLoja7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja7.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja7.setText("Entrar");
+        btnLoja7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja7ActionPerformed(evt);
+            }
+        });
+
+        avaliacao7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja7.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja7.setText("Nome da loja");
+
+        miniDescricaoLoja7.setText("Descricao");
+
+        jlbImagem12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        javax.swing.GroupLayout loja7Layout = new javax.swing.GroupLayout(loja7);
+        loja7.setLayout(loja7Layout);
+        loja7Layout.setHorizontalGroup(
+            loja7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja7Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jlbImagem12, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomeLoja7, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(avaliacao7, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(miniDescricaoLoja7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoja7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja7Layout.setVerticalGroup(
+            loja7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja7Layout.createSequentialGroup()
+                        .addComponent(jlbImagem12, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(loja7Layout.createSequentialGroup()
+                        .addComponent(nomeLoja7, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(miniDescricaoLoja7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLoja7)))
+                .addContainerGap())
+        );
+
+        loja8.setBackground(new java.awt.Color(255, 255, 255));
+        loja8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja8.setVisible(false);
+        loja8.setPreferredSize(new java.awt.Dimension(340, 118));
+
+        jlbImagem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja8.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja8.setText("Entrar");
+        btnLoja8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja8ActionPerformed(evt);
+            }
+        });
+
+        avaliacao8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja8.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja8.setText("Nome da loja");
+
+        miniDescricaoLoja8.setText("Descricao");
+
+        javax.swing.GroupLayout loja8Layout = new javax.swing.GroupLayout(loja8);
+        loja8.setLayout(loja8Layout);
+        loja8Layout.setHorizontalGroup(
+            loja8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja8Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jlbImagem8, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomeLoja8, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(avaliacao8, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(miniDescricaoLoja8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoja8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja8Layout.setVerticalGroup(
+            loja8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja8Layout.createSequentialGroup()
+                        .addComponent(nomeLoja8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao8, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLoja8))
+                    .addComponent(jlbImagem8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        loja9.setBackground(new java.awt.Color(255, 255, 255));
+        loja9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja9.setVisible(false);
+        loja9.setPreferredSize(new java.awt.Dimension(340, 118));
+
+        jlbImagem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja9.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja9.setText("Entrar");
+        btnLoja9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja9ActionPerformed(evt);
+            }
+        });
+
+        avaliacao9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja9.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja9.setText("Nome da loja");
+
+        miniDescricaoLoja9.setText("Descricao");
+
+        javax.swing.GroupLayout loja9Layout = new javax.swing.GroupLayout(loja9);
+        loja9.setLayout(loja9Layout);
+        loja9Layout.setHorizontalGroup(
+            loja9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja9Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jlbImagem9, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(loja9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(miniDescricaoLoja9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nomeLoja9, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                        .addComponent(avaliacao9, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLoja9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja9Layout.setVerticalGroup(
+            loja9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(loja9Layout.createSequentialGroup()
+                        .addComponent(nomeLoja9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoja9))
+                    .addComponent(jlbImagem9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        loja10.setBackground(new java.awt.Color(255, 255, 255));
+        loja10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102)));
+        loja10.setPreferredSize(new java.awt.Dimension(340, 118));
+        loja10.setVisible(false);
+
+        jlbImagem10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/imagem.png"))); // NOI18N
+
+        btnLoja10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnLoja10.setForeground(new java.awt.Color(0, 51, 102));
+        btnLoja10.setText("Entrar");
+        btnLoja10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoja10ActionPerformed(evt);
+            }
+        });
+
+        avaliacao10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/avaliacao (1).png"))); // NOI18N
+
+        nomeLoja10.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        nomeLoja10.setText("Nome da loja");
+
+        miniDescricaoLoja10.setText("Descricao");
+
+        javax.swing.GroupLayout loja10Layout = new javax.swing.GroupLayout(loja10);
+        loja10.setLayout(loja10Layout);
+        loja10Layout.setHorizontalGroup(
+            loja10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loja10Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jlbImagem10, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(loja10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nomeLoja10, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(avaliacao10, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(miniDescricaoLoja10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoja10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        loja10Layout.setVerticalGroup(
+            loja10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loja10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(loja10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(loja10Layout.createSequentialGroup()
+                        .addComponent(nomeLoja10, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(avaliacao10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(miniDescricaoLoja10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoja10))
+                    .addComponent(jlbImagem10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelLojasLayout = new javax.swing.GroupLayout(panelLojas);
+        panelLojas.setLayout(panelLojasLayout);
+        panelLojasLayout.setHorizontalGroup(
+            panelLojasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLojasLayout.createSequentialGroup()
+                .addContainerGap(231, Short.MAX_VALUE)
+                .addGroup(panelLojasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(loja10, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(loja9, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(loja7, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(loja4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loja3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loja5, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(loja1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loja2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loja6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                    .addComponent(loja8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
+        );
+        panelLojasLayout.setVerticalGroup(
+            panelLojasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLojasLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(loja1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(loja2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
+                .addComponent(loja3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(loja4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(loja5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(loja6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(loja7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(loja8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(loja9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(loja10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(3471, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(panelLojas);
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/LOGO.png"))); // NOI18N
+        jMenuBar1.add(logo);
+
+        espaco.setText("                                                                                                                                                                                ");
+        jMenuBar1.add(espaco);
+
+        perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/menu-hamburguer (1).png"))); // NOI18N
+
+        jmDadosPessoais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/do-utilizador_1.png"))); // NOI18N
+        jmDadosPessoais.setText("Dados Pessoal");
+
+        jMAlterarDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/alterar.png"))); // NOI18N
+        jMAlterarDados.setText("Alterar");
+        jMAlterarDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAlterarDadosActionPerformed(evt);
+            }
+        });
+        jmDadosPessoais.add(jMAlterarDados);
+
+        jMexcluirConta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/excluir.png"))); // NOI18N
+        jMexcluirConta.setText("Excluir");
+        jMexcluirConta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMexcluirContaActionPerformed(evt);
+            }
+        });
+        jmDadosPessoais.add(jMexcluirConta);
+
+        perfil.add(jmDadosPessoais);
+
+        jMMinhasCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/sacola-de-compras.png"))); // NOI18N
+        jMMinhasCompras.setText("Minhas Compras");
+        jMMinhasCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMMinhasComprasActionPerformed(evt);
+            }
+        });
+        perfil.add(jMMinhasCompras);
+
+        jMLoja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/loja.png"))); // NOI18N
+        jMLoja.setText("Loja");
+
+        jMCriarLoja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/compras.png"))); // NOI18N
+        jMCriarLoja.setText("Criar Loja");
+        jMCriarLoja.setVisible(false);
+        jMCriarLoja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMCriarLojaActionPerformed(evt);
+            }
+        });
+        jMLoja.add(jMCriarLoja);
+
+        jMMinhaLoja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/endereco.png"))); // NOI18N
+        jMMinhaLoja.setText("Minha Loja");
+        jMMinhaLoja.setVisible(false);
+        jMMinhaLoja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMMinhaLojaActionPerformed(evt);
+            }
+        });
+        jMLoja.add(jMMinhaLoja);
+
+        perfil.add(jMLoja);
+
+        jMSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imgs/sair.png"))); // NOI18N
+        jMSair.setText("Sair");
+        jMSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMSairActionPerformed(evt);
+            }
+        });
+        perfil.add(jMSair);
+
+        jMenuBar1.add(perfil);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+        );
+
+        setSize(new java.awt.Dimension(914, 507));
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jMAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarDadosActionPerformed
+
+        try {
+
+            ResultSet usuario = new AppDao().buscarUsuario(this.id);// executa o select//import java.sql.ResultSet;
+            // verificar se encontrou usuario informado
+            if (usuario.next()) {// se encontrou
+                //carregar os dados em outra janela para carregar os dados
+                String usu, sen, email, cpf;
+                usu = usuario.getString("nome");
+                sen = usuario.getString("senha");
+                email = usuario.getString("email");
+                cpf = usuario.getString("cpf");
+
+                Usuario u = new Usuario(usu, email, sen, cpf);
+                dispose();
+                new Alterar(u, this.id).setVisible(true);
+
+            } else {// se nao encontrou
+                JOptionPane.showMessageDialog(null, "Usuário não encontrado");
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro" + ex.getMessage());
+        }
+
+    }//GEN-LAST:event_jMAlterarDadosActionPerformed
+
+    private void jMSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMSairActionPerformed
+
+        dispose();
+        new Inicial().setVisible(true);
+
+
+    }//GEN-LAST:event_jMSairActionPerformed
+
+    private void jMexcluirContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMexcluirContaActionPerformed
+
+        try {
+
+            if (JOptionPane.showConfirmDialog(null, "Certeza que deseja excluir sua conta:") == 0) {
+
+                int retorno = new AppDao().excluirUsuario(this.id);
+
+                if (retorno == 1) {
+                    JOptionPane.showMessageDialog(null, "Usuario excluido com sucesso");
+                    dispose();
+                    new Inicial().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Usuario não existe");
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Conta não excluida");
+            }
+        } // quando a mensagem for a mesma use catch multiplo // quando a mensagem for a mesma use catch multiplo // quando a mensagem for a mesma use catch multiplo // quando a mensagem for a mesma use catch multiplo
+        catch (ClassNotFoundException | SQLException ex) {
+            
+            // se usuario tentar excluir a conta antes de excluir a loja dele 
+            if (ex.getMessage().contains("Cannot delete or update a parent row: a foreign key constraint fails")) {
+                JOptionPane.showMessageDialog(null, "Para excluir sua conta, é necessário realizar a exclusão da loja");
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro:" + ex.getMessage());
+            }
+            
+        }
+
+
+    }//GEN-LAST:event_jMexcluirContaActionPerformed
+
+    private void btnLoja2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja2ActionPerformed
+        String nomeLoja = nomeLoja2.getText();
+
+        dispose();
+        new Loja(nomeLoja,this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja2ActionPerformed
+
+    private void btnLoja1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja1ActionPerformed
+
+        String nomeLoja = nomeLoja1.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+
+
+    }//GEN-LAST:event_btnLoja1ActionPerformed
+
+    private void btnLoja3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja3ActionPerformed
+        String nomeLoja = nomeLoja3.getText();
+
+        dispose();
+        new Loja(nomeLoja,this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja3ActionPerformed
+
+    private void btnLoja4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja4ActionPerformed
+        String nomeLoja = nomeLoja4.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja4ActionPerformed
+
+    private void btnLoja5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja5ActionPerformed
+        String nomeLoja = nomeLoja5.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja5ActionPerformed
+
+    private void btnLoja6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja6ActionPerformed
+        String nomeLoja = nomeLoja6.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja6ActionPerformed
+
+    private void btnLoja7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja7ActionPerformed
+        String nomeLoja = nomeLoja7.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja7ActionPerformed
+
+    private void btnLoja8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja8ActionPerformed
+        String nomeLoja = nomeLoja8.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja8ActionPerformed
+
+    private void btnLoja9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja9ActionPerformed
+        String nomeLoja = nomeLoja9.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja9ActionPerformed
+
+    private void btnLoja10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoja10ActionPerformed
+        String nomeLoja = nomeLoja10.getText();
+
+        dispose();
+        new Loja(nomeLoja, this.id).setVisible(true);
+    }//GEN-LAST:event_btnLoja10ActionPerformed
+
+    private void jMMinhaLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMinhaLojaActionPerformed
+        dispose();
+        new MinhaLoja(this.id).setVisible(true);
+    }//GEN-LAST:event_jMMinhaLojaActionPerformed
+
+    private void jMCriarLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCriarLojaActionPerformed
+        dispose();
+        new CriarLoja(this.id).setVisible(true);
+
+    }//GEN-LAST:event_jMCriarLojaActionPerformed
+
+    private void jMMinhasComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMMinhasComprasActionPerformed
+        
+        dispose();
+        new MinhasCompras(this.id).setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMMinhasComprasActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel avaliacao;
+    private javax.swing.JLabel avaliacao10;
+    private javax.swing.JLabel avaliacao2;
+    private javax.swing.JLabel avaliacao3;
+    private javax.swing.JLabel avaliacao4;
+    private javax.swing.JLabel avaliacao5;
+    private javax.swing.JLabel avaliacao6;
+    private javax.swing.JLabel avaliacao7;
+    private javax.swing.JLabel avaliacao8;
+    private javax.swing.JLabel avaliacao9;
+    private javax.swing.JButton btnLoja1;
+    private javax.swing.JButton btnLoja10;
+    private javax.swing.JButton btnLoja2;
+    private javax.swing.JButton btnLoja3;
+    private javax.swing.JButton btnLoja4;
+    private javax.swing.JButton btnLoja5;
+    private javax.swing.JButton btnLoja6;
+    private javax.swing.JButton btnLoja7;
+    private javax.swing.JButton btnLoja8;
+    private javax.swing.JButton btnLoja9;
+    private javax.swing.JMenu espaco;
+    private javax.swing.JMenuItem jMAlterarDados;
+    private javax.swing.JMenuItem jMCriarLoja;
+    private javax.swing.JMenu jMLoja;
+    private javax.swing.JMenuItem jMMinhaLoja;
+    private javax.swing.JMenuItem jMMinhasCompras;
+    private javax.swing.JMenuItem jMSair;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMexcluirConta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jlbImagem10;
+    private javax.swing.JLabel jlbImagem11;
+    private javax.swing.JLabel jlbImagem12;
+    private javax.swing.JLabel jlbImagem2;
+    private javax.swing.JLabel jlbImagem3;
+    private javax.swing.JLabel jlbImagem4;
+    private javax.swing.JLabel jlbImagem5;
+    private javax.swing.JLabel jlbImagem8;
+    private javax.swing.JLabel jlbImagem9;
+    private javax.swing.JMenu jmDadosPessoais;
+    private javax.swing.JMenu logo;
+    private javax.swing.JLabel logoLoja1;
+    private javax.swing.JPanel loja1;
+    private javax.swing.JPanel loja10;
+    private javax.swing.JPanel loja2;
+    private javax.swing.JPanel loja3;
+    private javax.swing.JPanel loja4;
+    private javax.swing.JPanel loja5;
+    private javax.swing.JPanel loja6;
+    private javax.swing.JPanel loja7;
+    private javax.swing.JPanel loja8;
+    private javax.swing.JPanel loja9;
+    private javax.swing.JLabel miniDescricaoLoja1;
+    private javax.swing.JLabel miniDescricaoLoja10;
+    private javax.swing.JLabel miniDescricaoLoja2;
+    private javax.swing.JLabel miniDescricaoLoja3;
+    private javax.swing.JLabel miniDescricaoLoja4;
+    private javax.swing.JLabel miniDescricaoLoja5;
+    private javax.swing.JLabel miniDescricaoLoja6;
+    private javax.swing.JLabel miniDescricaoLoja7;
+    private javax.swing.JLabel miniDescricaoLoja8;
+    private javax.swing.JLabel miniDescricaoLoja9;
+    private javax.swing.JLabel nomeLoja1;
+    private javax.swing.JLabel nomeLoja10;
+    private javax.swing.JLabel nomeLoja2;
+    private javax.swing.JLabel nomeLoja3;
+    private javax.swing.JLabel nomeLoja4;
+    private javax.swing.JLabel nomeLoja5;
+    private javax.swing.JLabel nomeLoja6;
+    private javax.swing.JLabel nomeLoja7;
+    private javax.swing.JLabel nomeLoja8;
+    private javax.swing.JLabel nomeLoja9;
+    private javax.swing.JPanel panelLojas;
+    private javax.swing.JMenu perfil;
+    // End of variables declaration//GEN-END:variables
+}

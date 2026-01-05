@@ -1,0 +1,161 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
+ */
+package dados;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author bruno
+ */
+public class UsuarioTest {
+    
+    public UsuarioTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of getNome method, of class Usuario.
+     */
+    @Test
+    public void testGetNome() {
+        System.out.println("getNome");
+        Usuario instance = null;
+        String expResult = "";
+        String result = instance.getNome();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setNome method, of class Usuario.
+     */
+    @Test
+    public void testSetNome() {
+        System.out.println("setNome");
+        String nome = "";
+        Usuario instance = null;
+        instance.setNome(nome);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getEmail method, of class Usuario.
+     */
+    @Test
+    public void testGetEmail() {
+        System.out.println("getEmail");
+        Usuario instance = null;
+        String expResult = "";
+        String result = instance.getEmail();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setEmail method, of class Usuario.
+     */
+    @Test
+    public void testSetEmail() {
+        System.out.println("setEmail");
+        String email = "";
+        Usuario instance = null;
+        instance.setEmail(email);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getSenha method, of class Usuario.
+     */
+    @Test
+    public void testGetSenha() {
+        System.out.println("getSenha");
+        Usuario instance = null;
+        String expResult = "";
+        String result = instance.getSenha();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setSenha method, of class Usuario.
+     */
+    @Test
+    public void testSetSenha() {
+        System.out.println("setSenha");
+        String senha = "";
+        Usuario instance = null;
+        instance.setSenha(senha);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getCpf method, of class Usuario.
+     */
+    @Test
+    public void testGetCpf() {
+        System.out.println("getCpf");
+        Usuario instance = null;
+        String expResult = "";
+        String result = instance.getCpf();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setCpf method, of class Usuario.
+     */
+    @Test
+    public void testSetCpf() {
+        System.out.println("setCpf");
+        String cpf = "";
+        Usuario instance = null;
+        instance.setCpf(cpf);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toString method, of class Usuario.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        Usuario instance = null;
+        String expResult = "";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
+}
